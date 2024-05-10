@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 
-type articles = {
+interface articles {
   publishedAt: String
-  urlToImage: String
+  urlToImage: String | undefined
   title: String
   description: String
 }
@@ -51,7 +51,7 @@ export default async function BlogCard() {
     <>
       <div className='grid grid-cols-3 gap-8 p-4'>
         {data &&
-          data.map(articles => (
+          data.map((articles: articles) => (
             <div key={articles.publishedAt} className='rounded border'>
               <div>
                 {articles.urlToImage ? (
