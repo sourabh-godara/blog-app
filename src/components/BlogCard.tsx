@@ -3,7 +3,7 @@ import React from 'react'
 
 interface articles {
   publishedAt: String
-  urlToImage: String | undefined
+  urlToImage: String
   title: String
   description: String
 }
@@ -52,11 +52,11 @@ export default async function BlogCard() {
       <div className='grid grid-cols-3 gap-8 p-4'>
         {data &&
           data.map((articles: articles) => (
-            <div key={articles.publishedAt} className='rounded border'>
+            <div key={`${articles.publishedAt}`} className='rounded border'>
               <div>
                 {articles.urlToImage ? (
                   <Image
-                    src={articles?.urlToImage}
+                    src={`${articles?.urlToImage}`}
                     alt='article'
                     width={400}
                     height={400}
