@@ -1,13 +1,14 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
+  SheetClose,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet'
 import { RiMenu2Fill } from 'react-icons/ri'
 import { Button } from './ui/button'
+import Link from 'next/link'
 
 export default function NavbarModal({ categories }) {
   return (
@@ -21,11 +22,13 @@ export default function NavbarModal({ categories }) {
         </SheetHeader>
         <div className='mt-10 flex flex-col items-center gap-2'>
           {categories.map(c => (
-            <li className='list-none ' key={c.link}>
-              <Button className='text-base' variant='ghost'>
-                {c.name}
-              </Button>
-            </li>
+            <Link href={c.link} key={c.link}>
+              <SheetClose asChild>
+                <Button className='mx-0 text-base ' variant='ghost'>
+                  {c.name}
+                </Button>
+              </SheetClose>
+            </Link>
           ))}
         </div>
       </SheetContent>
