@@ -13,7 +13,7 @@ export default function NavbarModal({ categories }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <RiMenu2Fill />
+        <RiMenu2Fill size={22} />
       </SheetTrigger>
       <SheetContent className=' w-56' side={'left'}>
         <SheetHeader>

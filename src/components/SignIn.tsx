@@ -68,7 +68,7 @@ export default function SignIn() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className='w-full'>Create account</Button>
+            <Button className='w-full'>Sign in</Button>
           </CardFooter>
         </Card>
       </DialogContent>

@@ -30,12 +30,16 @@ export default function Navbar() {
         <NavbarModal categories={categories} />
       </div>
       <h1 className='w-full px-2 text-center text-xl font-semibold md:w-fit'>
-        <span className='text-red-700'>FRESH </span>
+        <span className='font-bold text-red-700'>FRESH </span>
         KHABAR
       </h1>
-      <ul className=' hidden items-center justify-center gap-14 p-2 md:flex'>
+      <ul className=' hidden items-center justify-center gap-10 p-2 md:flex'>
         {categories.map(c => (
-          <li key={c.link}>{c.name}</li>
+          <li key={c.link}>
+            <Button className='mx-0 text-base ' variant='ghost'>
+              {c.name}
+            </Button>
+          </li>
         ))}
       </ul>
       <div className='hidden gap-3 md:flex'>
