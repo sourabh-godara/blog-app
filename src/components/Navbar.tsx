@@ -12,16 +12,20 @@ export default function Navbar() {
       link: '/'
     },
     {
-      name: 'Trending',
-      link: '/trending'
+      name: 'Health',
+      link: '/category/health'
     },
     {
       name: 'Technology',
-      link: '/about'
+      link: '/category/technology'
     },
     {
-      name: 'Jobs',
-      link: '/profile'
+      name: 'Sports',
+      link: '/category/sports'
+    },
+    {
+      name: 'Entertainment',
+      link: '/category/entertainment'
     }
   ]
   return (
@@ -33,15 +37,15 @@ export default function Navbar() {
         <span className='font-bold text-red-700'>FRESH </span>
         KHABAR
       </h1>
-      <ul className=' hidden items-center justify-center gap-10 p-2 md:flex'>
+      <div className=' hidden items-center justify-center gap-10 p-2 md:flex'>
         {categories.map(c => (
-          <li key={c.link}>
+          <Link href={c.link} key={c.link}>
             <Button className='mx-0 text-base ' variant='ghost'>
               {c.name}
             </Button>
-          </li>
+          </Link>
         ))}
-      </ul>
+      </div>
       <div className='hidden gap-3 md:flex'>
         <ThemeToggle />
         <SignIn />
