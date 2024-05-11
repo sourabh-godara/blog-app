@@ -24,16 +24,20 @@ export default function Navbar() {
     }
   ]
   return (
-    <nav>
-      <ul className='flex items-center justify-center gap-14 p-2'>
+    <nav className='flex items-center justify-between'>
+      <h1 className='w-full px-2 text-center font-semibold md:w-fit md:text-left md:text-xl'>
+        <span className='text-red-700'>FRESH </span>
+        KHABAR
+      </h1>
+      <ul className=' hidden items-center justify-center gap-14 p-2 md:flex'>
         {categories.map(category => (
           <li key={category.link}>{category.name}</li>
         ))}
-        <div className='relative left-40 flex gap-4'>
-          <ThemeToggle />
-          <SignIn />
-        </div>
       </ul>
+      <div className='hidden gap-3 md:flex'>
+        <ThemeToggle />
+        <SignIn />
+      </div>
     </nav>
   )
 }

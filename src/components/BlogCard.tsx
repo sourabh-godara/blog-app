@@ -1,16 +1,18 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface articles {
   publishedAt: String
   urlToImage: String
+  url: String
   title: String
   description: String
 }
 const fetchNews = async () => {
   try {
     const res = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=in&category=sports&sortBy=popularity&apiKey=62cc131f607c4cd98efdecb48f7ecbd9`
+      `https://newsapi.org/v2/top-headlines?country=in&sortBy=popularity&apiKey=62cc131f607c4cd98efdecb48f7ecbd9`
     )
     const data = await res.json()
     return { data: data.articles, error: null }
@@ -47,29 +49,37 @@ export default async function BlogCard() {
       description: 'Description of Blog 5'
     }
   ]
+  const filteredData = data.filter((item: articles) => item.urlToImage !== null)
   return (
     <>
-      <div className='grid grid-cols-3 gap-8 p-4'>
-        {data &&
-          data.map((articles: articles) => (
-            <div key={`${articles.publishedAt}`} className='rounded border'>
-              <div>
+      <div className='grid grid-cols-1 gap-8 p-4 md:grid-cols-3'>
+        {filteredData &&
+          filteredData.map((articles: articles) => (
+            <Link
+              href={`${articles.url}`}
+              key={`${articles.publishedAt}`}
+              className='rounded border'
+            >
+              <div className='relative h-44 w-full'>
                 {articles.urlToImage ? (
                   <Image
                     src={`${articles?.urlToImage}`}
                     alt='article'
-                    width={400}
-                    height={400}
+                    className='relative'
+                    fill
+                    objectFit='cover'
                   />
                 ) : null}
               </div>
               <div className='mt-2 p-2'>
-                <div className='text-lg font-medium'>{articles.title}</div>
-                <div className='line-clamp-2 text-sm font-light'>
+                <div className='line-clamp-2 text-lg font-medium'>
+                  {articles.title}
+                </div>
+                <div className='mt-2 line-clamp-2 text-sm font-light'>
                   {articles.description}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
     </>
