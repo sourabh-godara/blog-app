@@ -31,7 +31,7 @@ export default async function BlogCard({ articles }) {
                     alt='article'
                     className='relative'
                     fill
-                    objectFit='cover'
+                    style={{ objectFit: 'cover' }}
                   />
                 ) : null}
               </div>

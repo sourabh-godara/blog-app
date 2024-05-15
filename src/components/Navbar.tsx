@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 import { ThemeToggle } from './ThemeToogle'
 import { Button } from './ui/button'
-import SignIn from './SignIn'
 import NavbarModal from './navbar-modal'
 
 export default function Navbar() {
@@ -48,7 +47,6 @@ export default function Navbar() {
       </div>
       <div className='hidden gap-3 md:flex'>
         <ThemeToggle />
-        <SignIn />
       </div>
     </nav>
   )
