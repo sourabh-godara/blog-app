@@ -2,7 +2,7 @@
 
 import automatingRepetitiveTasksProductivityHacksForDevelopers__indexMdx from './automating-repetitive-tasks-productivity-hacks-for-developers__index.mdx.json' assert { type: 'json' }
 import bestPracticesForWritingCleanAndMaintainableCode__indexMdx from './best-practices-for-writing-clean-and-maintainable-code__index.mdx.json' assert { type: 'json' }
-import jsFrameworksComparison__indexMdx from './js-frameworks-comparison__index.mdx.json' assert { type: 'json' }
 import restfulApisBuildingBlocks__indexMdx from './restful-apis-building-blocks__index.mdx.json' assert { type: 'json' }
+import jsFrameworksComparison__indexMdx from './js-frameworks-comparison__index.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [automatingRepetitiveTasksProductivityHacksForDevelopers__indexMdx, bestPracticesForWritingCleanAndMaintainableCode__indexMdx, jsFrameworksComparison__indexMdx, restfulApisBuildingBlocks__indexMdx]
+export const allBlogs = [automatingRepetitiveTasksProductivityHacksForDevelopers__indexMdx, bestPracticesForWritingCleanAndMaintainableCode__indexMdx, restfulApisBuildingBlocks__indexMdx, jsFrameworksComparison__indexMdx]
