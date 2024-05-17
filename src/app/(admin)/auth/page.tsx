@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { UserAuthForm } from './auth-form'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 export default async function AuthenticationPage() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession()
   if (session) {
     return redirect('/verify')
   }
