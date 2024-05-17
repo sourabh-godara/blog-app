@@ -1,16 +1,28 @@
-'use client'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
-import React from 'react'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import { title } from 'process'
+import { Metadata } from 'next'
 
-export default function page() {
+export const metadata: Metadata = {
+  title: 'Editor',
+  description: 'Blog Editor'
+}
+
+const EditorComp = dynamic(() => import('./EditorComp'), { ssr: false })
+
+const markdown = `
+# Heading
+Hello **world**!
+`
+
+export default function Home() {
   return (
     <>
-      <div className='mt-4'>
-        <Textarea placeholder='Enter Text Here' />
-        <div className='mt-2 p-2'>
-          <Button>Submit</Button>
-        </div>
+      <div>
+        <Suspense fallback={null}>
+          <EditorComp markdown={markdown} />
+        </Suspense>
       </div>
     </>
   )
