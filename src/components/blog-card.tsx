@@ -2,32 +2,36 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-interface articles {
+interface blog {
   publishedAt: String
-  urlToImage: String
+  updatedAt: String
+  image: {
+    filePath: String
+  }
   url: String
   title: String
   description: String
+  author: String
+  _raw: {
+    flattenedPath: String
+  }
 }
 
-export default async function BlogCard({ articles }) {
-  const filteredArticles = articles?.filter(
-    (item: articles) => item.urlToImage !== null
-  )
+export default async function BlogCard({ blogs }) {
   return (
     <>
       <div className='grid grid-cols-1 gap-8 p-4 md:grid-cols-3'>
-        {filteredArticles &&
-          filteredArticles.map((articles: articles) => (
+        {blogs &&
+          blogs.map((blog: blog) => (
             <Link
-              href={`${articles.url}`}
-              key={`${articles.publishedAt}`}
+              href={`/blog/${blog._raw.flattenedPath}`}
+              key={`${blog.publishedAt}`}
               className='rounded border'
             >
               <div className='relative h-44 w-full'>
-                {articles.urlToImage ? (
+                {blog.image ? (
                   <Image
-                    src={`${articles?.urlToImage}`}
+                    src={`${blog?.image.filePath.replace('../public', '')}`}
                     alt='article'
                     className='relative'
                     fill
@@ -37,10 +41,10 @@ export default async function BlogCard({ articles }) {
               </div>
               <div className='mt-2 p-2'>
                 <div className='line-clamp-2 text-lg font-medium'>
-                  {articles.title}
+                  {blog.title}
                 </div>
                 <div className='mt-2 line-clamp-2 text-sm font-light'>
-                  {articles.description}
+                  {blog.description}
                 </div>
               </div>
             </Link>

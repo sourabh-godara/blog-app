@@ -47,6 +47,9 @@ export default function Navbar() {
       </div>
       <div className='hidden gap-3 md:flex'>
         <ThemeToggle />
+        <Link href={'/auth'}>
+          <Button size='sm'>Dashboard</Button>
+        </Link>
       </div>
     </nav>
   )
