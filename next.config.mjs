@@ -9,6 +9,9 @@ const nextConfig = {
         hostname: '**'
       }
     ]
+  },
+  compiler: {
+    removeConsole: true
   }
 }
 export default withContentlayer({ ...nextConfig })
