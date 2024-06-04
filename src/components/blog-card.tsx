@@ -1,21 +1,8 @@
+import { urlForImage } from '@/lib/sanity.image'
+import { blog } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
-interface blog {
-  publishedAt: String
-  updatedAt: String
-  image: {
-    filePath: String
-  }
-  url: String
-  title: String
-  description: String
-  author: String
-  _raw: {
-    flattenedPath: String
-  }
-}
 
 export default async function BlogCard({ blogs }) {
   return (
@@ -24,14 +11,14 @@ export default async function BlogCard({ blogs }) {
         {blogs &&
           blogs.map((blog: blog) => (
             <Link
-              href={`/blog/${blog._raw.flattenedPath}`}
+              href={`/blog/${blog.slug}`}
               key={`${blog.publishedAt}`}
               className='rounded border'
             >
               <div className='relative h-44 w-full'>
-                {blog.image ? (
+                {blog.mainImage ? (
                   <Image
-                    src={`${blog?.image.filePath.replace('../public', '')}`}
+                    src={urlForImage(blog.mainImage)}
                     alt='article'
                     className='relative'
                     fill
@@ -40,11 +27,11 @@ export default async function BlogCard({ blogs }) {
                 ) : null}
               </div>
               <div className='mt-2 p-2'>
-                <div className='line-clamp-2 text-lg font-medium'>
+                <div className='line-clamp-2 text-base font-medium'>
                   {blog.title}
                 </div>
-                <div className='mt-2 line-clamp-2 text-sm font-light'>
-                  {blog.description}
+                <div className='mt-2 line-clamp-2 text-xs text-gray-500'>
+                  {blog.publishedAt.split('T')[0]}
                 </div>
               </div>
             </Link>

@@ -36,7 +36,7 @@ export default function Navbar() {
         <span className='font-bold text-red-700'>FRESH </span>
         KHABAR
       </h1>
-      <div className=' hidden items-center justify-center gap-10 p-2 md:flex'>
+      <div className=' hidden items-center justify-center gap-6 p-1 md:flex'>
         {categories.map(c => (
           <Link href={c.link} key={c.link}>
             <Button className='mx-0 text-base ' variant='ghost'>
