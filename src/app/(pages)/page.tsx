@@ -10,11 +10,11 @@ export default async function page() {
     mainImage,
     publishedAt
 }`
-  const allBlogs = await client.fetch(query)
+  const blogs = await client.fetch(query)
   return (
     <>
       <main>
-        <BlogCard blogs={allBlogs} />
+        <BlogCard blogs={blogs} />
       </main>
     </>
   )

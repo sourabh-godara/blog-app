@@ -5,7 +5,13 @@ import { PortableText } from 'next-sanity'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import React from 'react'
+import { Slug } from 'sanity'
 
+type Props = {
+  params: {
+    slug: string
+  }
+}
 const ImageComponent = ({ value }) => {
   return (
     <div className='relative m-auto mb-10 aspect-video h-full w-full'>
@@ -20,8 +26,20 @@ const ImageComponent = ({ value }) => {
   )
 }
 
-export default async function page({ params }: { params: { slug: String } }) {
-  const query = `*[slug.current == "${params.slug}"]{
+export async function generateStaticParams() {
+  const query = `*[_type=='post']{
+    slug
+  }`
+  const slugs = await client.fetch(query)
+
+  const slugRoutes = slugs.map(slug => slug.slug.current)
+  return slugRoutes.map(slug => ({
+    slug
+  }))
+}
+
+export default async function page({ params: { slug } }: Props) {
+  const query = `*[slug.current == "${slug}"]{
   title,
     mainImage,
     publishedAt,
