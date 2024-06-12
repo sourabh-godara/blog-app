@@ -8,7 +8,8 @@ export default async function page() {
   title,
     'slug':slug.current,
     mainImage,
-    publishedAt
+    publishedAt,
+    author->{'slug':slug.current,name}
 }`
   const blogs = await client.fetch(query)
   return (

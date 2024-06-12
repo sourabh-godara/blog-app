@@ -25,7 +25,7 @@ export default function NavbarModal({ categories }) {
             <Link href={c.link} key={c.link}>
               <SheetClose asChild>
                 <Button className='mx-0 text-base ' variant='ghost'>
-                  {c.name}
+                  {c.title}
                 </Button>
               </SheetClose>
             </Link>

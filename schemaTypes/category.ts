@@ -11,9 +11,10 @@ export default defineType({
       type: 'string'
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text'
+      name: 'link',
+      title: 'Link',
+      type: 'string',
+      initialValue: 'category/'
     })
   ]
 })

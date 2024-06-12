@@ -3,6 +3,7 @@ import { blog } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { FaUser } from 'react-icons/fa6'
 
 export default async function BlogCard({ blogs }) {
   return (
@@ -15,7 +16,7 @@ export default async function BlogCard({ blogs }) {
               key={`${blog.publishedAt}`}
               className='rounded border'
             >
-              <div className='relative h-44 w-full'>
+              <div className='relative h-48 w-full'>
                 {blog.mainImage ? (
                   <Image
                     src={urlForImage(blog.mainImage)}
@@ -27,11 +28,17 @@ export default async function BlogCard({ blogs }) {
                 ) : null}
               </div>
               <div className='mt-2 p-2'>
-                <div className='line-clamp-2 text-base font-medium'>
+                <div className='line-clamp-3 text-xl font-semibold leading-7'>
                   {blog.title}
                 </div>
-                <div className='mt-2 line-clamp-2 text-xs text-gray-500'>
-                  {blog.publishedAt.split('T')[0]}
+                <div className='mt-3 line-clamp-2 flex items-center justify-between '>
+                  <h3 className='flex items-center gap-1 text-sm font-medium opacity-95'>
+                    <FaUser size={14} />
+                    {blog.author.name}
+                  </h3>
+                  <span className='text-xs  text-gray-500'>
+                    {blog.publishedAt.split('T')[0]}
+                  </span>
                 </div>
               </div>
             </Link>

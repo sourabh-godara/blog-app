@@ -1,16 +1,22 @@
-export interface blog {
+export type blog = {
   publishedAt: String
   slug: String
   mainImage: any
   title: String
   description: String
-  author: String
+  author: {
+    slug: String
+    name: String
+  }
 }
 
-export interface blogDetails {
+export type blogDetails = {
   publishedAt: String
   mainImage: any
   title: String
-  author: String
+  author: {
+    slug: String
+    name: String
+  }
   body: any
 }
