@@ -18,7 +18,7 @@ import { FaTelegramPlane } from 'react-icons/fa'
 export default function ShareArticle() {
   const { toast } = useToast()
   const pathname = usePathname()
-  const base = 'http://localhost:3000'
+  const base = 'https://blog-app-cznt.vercel.app'
   const link = base + pathname
   const copyLink = e => {
     navigator.clipboard.writeText(link)
