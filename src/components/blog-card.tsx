@@ -1,3 +1,4 @@
+import { formatDate } from '@/lib/dateFormat'
 import { urlForImage } from '@/lib/sanity.image'
 import { blog } from '@/lib/types'
 import Image from 'next/image'
@@ -28,7 +29,7 @@ export default async function BlogCard({ blogs }) {
                 ) : null}
               </div>
               <div className='mt-2 p-2'>
-                <div className='line-clamp-3 text-xl font-semibold leading-7'>
+                <div className='line-clamp-3 font-bold leading-6'>
                   {blog.title}
                 </div>
                 <div className='mt-3 line-clamp-2 flex items-center justify-between '>
@@ -37,7 +38,7 @@ export default async function BlogCard({ blogs }) {
                     {blog.author.name}
                   </h3>
                   <span className='text-xs  text-gray-500'>
-                    {blog.publishedAt.split('T')[0]}
+                    {formatDate(blog.publishedAt)}
                   </span>
                 </div>
               </div>

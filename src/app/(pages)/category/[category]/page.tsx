@@ -20,18 +20,16 @@ const fetchPosts = async (category: string) => {
   }
 }`
 
-  const blogs = await client.fetch(query)
-  console.log(blogs.posts)
-  console.log(category.charAt(0).toUpperCase() + category.slice(1))
-  if (!blogs) {
+  const { posts } = await client.fetch(query)
+  if (!posts) {
     return { data: null, error: 'No Blogs Found' }
   }
-  return { data: blogs.posts, error: null }
+  return { data: posts, error: null }
 }
 export default async function page({ params: { category } }: Props) {
   const { data, error }: { data: blog; error: any } = await fetchPosts(category)
   if (error) {
-    notFound()
+    ;<h1>No Blogs Found</h1>
   }
   return (
     <>

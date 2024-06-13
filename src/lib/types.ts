@@ -1,5 +1,5 @@
 export type blog = {
-  publishedAt: String
+  publishedAt: Date
   slug: String
   mainImage: any
   title: String

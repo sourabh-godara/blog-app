@@ -1,3 +1,5 @@
+import AuthorInfo from '@/components/author-info'
+import ShareArticle from '@/components/share-article'
 import { client } from '@/lib/sanity.client'
 import { urlForImage } from '@/lib/sanity.image'
 import { blogDetails } from '@/lib/types'
@@ -47,7 +49,8 @@ export default async function page({ params: { slug } }: Props) {
   title,
     mainImage,
     publishedAt,
-    body
+    body,
+    author->{'slug':slug.current,name}
 }[0]`
   const blog: blogDetails = await client.fetch(query)
   if (!blog) {
@@ -56,10 +59,15 @@ export default async function page({ params: { slug } }: Props) {
   return (
     <>
       <article>
-        <h1 className=' mt-6 p-4 text-center text-3xl font-bold md:text-5xl md:leading-normal'>
+        <h1 className=' mt-4 p-3 text-3xl font-bold md:text-5xl md:leading-normal'>
           {blog.title}
         </h1>
-        <div className='relative m-auto aspect-video h-full w-[90%]'>
+        <div className='flex items-center justify-between'>
+          <AuthorInfo author={blog.author} publishedAt={blog.publishedAt} />
+          <ShareArticle />
+        </div>
+
+        <div className='relative m-auto aspect-video h-full w-full'>
           <Image
             src={urlForImage(blog.mainImage)}
             alt='blog-img'
@@ -68,7 +76,7 @@ export default async function page({ params: { slug } }: Props) {
             style={{ objectFit: 'cover' }}
           />
         </div>
-        <div className='prose prose-lg prose-blue m-auto  max-w-4xl dark:prose-invert '>
+        <div className='prose prose-lg prose-blue m-auto mt-2 max-w-6xl dark:prose-invert '>
           <PortableText
             value={blog.body}
             components={{
