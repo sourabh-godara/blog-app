@@ -6,6 +6,9 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
+//may also like
+//"related": *[ _type == "movie" && genre == ^.genre ]
+
 type Props = {
   params: {
     slug: string

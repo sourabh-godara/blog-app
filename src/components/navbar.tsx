@@ -39,7 +39,7 @@ export default async function Navbar() {
         <span className='font-bold text-red-700'>FRESH </span>
         KHABAR
       </Link>
-      <div className=' hidden items-center justify-center gap-3 p-1 md:flex'>
+      <div className=' hidden items-center justify-center p-0.5 md:flex'>
         {data.map(c => (
           <Link href={c.link} key={c.link}>
             <Button className='mx-0 text-base ' variant='ghost'>

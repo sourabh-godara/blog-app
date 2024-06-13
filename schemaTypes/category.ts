@@ -14,7 +14,7 @@ export default defineType({
       name: 'link',
       title: 'Link',
       type: 'string',
-      initialValue: 'category/'
+      initialValue: '/category/'
     })
   ]
 })
