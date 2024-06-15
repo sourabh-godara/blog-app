@@ -1,7 +1,7 @@
 'use client'
 
 import { getToken } from 'firebase/messaging'
-import { messaging } from '@/lib/firebase'
+import { messaging } from './firebase-init'
 import { useEffect } from 'react'
 
 export default function Notifications() {

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/ui/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import Footer from '@/components/footer'
 import Notifications from '@/components/notifications'
+import FirebaseInit from '@/components/firebase-init'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
+        <FirebaseInit />
         <Notifications />
         <ThemeProvider
           attribute='class'
