@@ -9,27 +9,13 @@ export default function Notifications() {
     const permission = await Notification.requestPermission()
     if (permission === 'granted') {
       const token = await getToken(messaging, {
-        vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY
+        vapidKey:
+          'BH9o1s332JWGrXZtm8j0knICCAbl9QBDZEcd91ek-P3s_8UDEzZMR4Vc8K29ONFbKZUCGwwlmP1ifT_6L7KTOsA'
       })
-        .then(currentToken => {
-          if (currentToken) {
-            console.log('Firebase Token', currentToken)
-          } else {
-            // Show permission request UI
-            console.log(
-              'No registration token available. Request permission to generate one.'
-            )
-            // ...
-          }
-        })
-        .catch(err => {
-          console.log('An error occurred while retrieving token. ', err)
-          // ...
-        })
-    } else if (permission === 'denied') {
-      console.log('permission denied')
+      console.log('Generated Token: ' + token)
     }
   }
+
   useEffect(() => {
     requestPermission()
   }, [])

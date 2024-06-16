@@ -1,19 +1,5 @@
-'use client'
-import { useEffect } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getMessaging } from 'firebase/messaging'
-import {
-  apiKey,
-  appId,
-  authDomain,
-  measurementId,
-  messagingSenderId,
-  projectId,
-  storageBucket
-} from '../lib/firebase.api'
-
-export let app
-export let messaging
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBxhyU7JSIKD8Q0uVXJQaUP44T6AatnTfY',
@@ -25,10 +11,5 @@ const firebaseConfig = {
   measurementId: 'G-PMB8GPKC46'
 }
 
-export default function FirebaseInit() {
-  useEffect(() => {
-    app = initializeApp(firebaseConfig)
-    messaging = getMessaging(app)
-  })
-  return null
-}
+export const app = initializeApp(firebaseConfig)
+export const messaging = getMessaging(app)
