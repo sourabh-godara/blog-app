@@ -2,15 +2,6 @@
 import { useEffect } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getMessaging } from 'firebase/messaging'
-import {
-  apiKey,
-  appId,
-  authDomain,
-  measurementId,
-  messagingSenderId,
-  projectId,
-  storageBucket
-} from '../lib/firebase.api'
 
 export let app
 export let messaging
