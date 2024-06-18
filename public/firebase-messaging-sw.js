@@ -1,24 +1,14 @@
 importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js')
 importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js')
 
-import {
-  apiKey,
-  appId,
-  authDomain,
-  measurementId,
-  messagingSenderId,
-  projectId,
-  storageBucket
-} from '../src/lib/firebase.api'
-
 const firebaseConfig = {
-  apiKey,
-  authDomain,
-  projectId,
-  storageBucket,
-  messagingSenderId,
+  apiKey: 'AIzaSyBxhyU7JSIKD8Q0uVXJQaUP44T6AatnTfY',
+  authDomain: 'blog-notification-33975.firebaseapp.com',
+  projectId: 'blog-notification-33975',
+  storageBucket: 'blog-notification-33975.appspot.com',
+  messagingSenderId: '328361184149',
   appId: '1:328361184149:web:c344c7b760a47b573cc49c',
-  measurementId
+  measurementId: 'G-PMB8GPKC46'
 }
 
 firebase.initializeApp(firebaseConfig)

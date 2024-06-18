@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
-        <FirebaseInit />
+        {/* <FirebaseInit /> */}
         <Notifications />
         <ThemeProvider
           attribute='class'
