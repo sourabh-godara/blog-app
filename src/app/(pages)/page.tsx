@@ -25,9 +25,7 @@ export default async function page() {
   const blogs = await client.fetch(query)
   return (
     <>
-      <main>
-        <BlogCard blogs={blogs} />
-      </main>
+      <BlogCard blogs={blogs} />
     </>
   )
 }
