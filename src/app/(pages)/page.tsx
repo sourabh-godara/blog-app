@@ -2,17 +2,6 @@ import BlogCard from '@/components/blog-card'
 import { client } from '@/lib/sanity.client'
 import React from 'react'
 
-export type blog = {
-  publishedAt: Date
-  slug: String
-  mainImage: any
-  title: String
-  description: String
-  author: {
-    slug: String
-    name: String
-  }
-}
 export default async function page() {
   const query = `
   *[_type == "post"] {
@@ -25,7 +14,9 @@ export default async function page() {
   const blogs = await client.fetch(query)
   return (
     <>
-      <BlogCard blogs={blogs} />
+      <main>
+        <BlogCard blogs={blogs} />
+      </main>
     </>
   )
 }
