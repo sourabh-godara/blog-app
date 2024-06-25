@@ -16,7 +16,22 @@ type Props = {
     slug: string
   }
 }
-export const revalidate = 20
+export const revalidate = 60
+
+export async function generateMetadata({ params: { slug } }: Props) {
+  const query = `*[slug.current == "${slug}"]{
+  title,
+}[0]`
+  const blog: blogDetails = await client.fetch(query)
+  return {
+    title: `${blog.title} | Fresh Khabar`,
+    description: `${blog.title} - Read more about ${blog.title}`,
+    type: 'article',
+    OpenGraph: {
+      images: blog.mainImage
+    }
+  }
+}
 
 const ImageComponent = ({ value }) => {
   return (

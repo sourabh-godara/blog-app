@@ -6,12 +6,15 @@ import Link from 'next/link'
 import React from 'react'
 import { FaUser } from 'react-icons/fa6'
 
-export default async function BlogCard({ blogs }) {
+type Props = {
+  blogs: blog[]
+}
+export default async function BlogCard({ blogs }: Props) {
   return (
     <>
       <div className='grid grid-cols-1 gap-8 p-4 md:grid-cols-3'>
         {blogs &&
-          blogs.map((blog: blog) => (
+          blogs.map(blog => (
             <Link
               href={`/blog/${blog.slug}`}
               key={`${blog.publishedAt}`}
