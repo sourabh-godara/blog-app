@@ -50,8 +50,8 @@ export default async function Navbar() {
       </div>
       <div className='hidden gap-3 md:flex'>
         <ThemeToggle />
-        <Link href={'/studio'}>
-          <Button size='sm'>Dashboard</Button>
+        <Link href={'/job'}>
+          <Button size='sm'>Apply for Job</Button>
         </Link>
       </div>
     </nav>

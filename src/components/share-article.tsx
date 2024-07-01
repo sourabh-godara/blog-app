@@ -8,6 +8,11 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip'
 import { useToast } from '@/components/ui/use-toast'
+import {
+  FacebookShareButton,
+  TelegramShareButton,
+  TwitterShareButton
+} from 'react-share'
 
 import { usePathname } from 'next/navigation'
 import { FaLink } from 'react-icons/fa6'
@@ -15,6 +20,7 @@ import { FaFacebook } from 'react-icons/fa6'
 import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaTwitter } from 'react-icons/fa'
 import { FaTelegramPlane } from 'react-icons/fa'
+import Link from 'next/link'
 export default function ShareArticle() {
   const { toast } = useToast()
   const pathname = usePathname()
@@ -49,26 +55,30 @@ export default function ShareArticle() {
           <Separator className='h-3' orientation='vertical' />
         </div>
         <div className='flex gap-1 md:gap-2'>
-          <IoLogoWhatsapp
-            onClick={copyLink}
-            className='rounded-lg p-1.5 hover:bg-accent'
-            size={size}
-          />
-          <FaFacebook
-            onClick={copyLink}
-            className='rounded-lg p-1.5 hover:bg-accent'
-            size={size}
-          />
-          <FaTwitter
-            onClick={copyLink}
-            className='rounded-lg p-1.5 hover:bg-accent'
-            size={size}
-          />
-          <FaTelegramPlane
-            onClick={copyLink}
-            className='rounded-lg p-1.5 hover:bg-accent'
-            size={size}
-          />
+          <Link href={`whatsapp://send?text=${link}`}>
+            <IoLogoWhatsapp
+              className='rounded-lg p-1.5 hover:bg-accent'
+              size={size}
+            />
+          </Link>
+          <FacebookShareButton url={link}>
+            <FaFacebook
+              className='rounded-lg p-1.5 hover:bg-accent'
+              size={size}
+            />
+          </FacebookShareButton>
+          <TelegramShareButton url={link}>
+            <FaTelegramPlane
+              className='rounded-lg p-1.5 hover:bg-accent'
+              size={size}
+            />
+          </TelegramShareButton>
+          <TwitterShareButton url={link}>
+            <FaTwitter
+              className='rounded-lg p-1.5 hover:bg-accent'
+              size={size}
+            />
+          </TwitterShareButton>
         </div>
       </div>
     </>
